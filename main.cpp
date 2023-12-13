@@ -1,148 +1,100 @@
 #include "stdafx.h"
 
-int YOUKILLEDTHATMONKEY() {
-	sf::RenderWindow main_window(sf::VideoMode(1280, 720), "egg monkey game YOU WON MY LITTLE POOKIE BEAR I SOOO LUV YOU <3 UwU <3");
-	main_window.setFramerateLimit(60);
-
-	sf::Texture textureBackground;
-	textureBackground.loadFromFile("textures/monkey_ded .png");
-
-	sf::Sprite background;
-	background.setTexture(textureBackground);
-	background.setPosition(180, 80);
-
-	sf::Font verdana;
-
-	verdana.loadFromFile("C:\\Users\\Kajus\\Desktop\\BeuhDev\\BeuhDev\\fonts\\verdana.ttf");
-
-	sf::Text egg_is_a_dick;
-
-	egg_is_a_dick.setFont(verdana);
-	egg_is_a_dick.setString("You ass-erted dominance over the kfc munchin, banana liking, watermelon slurping EGG monkey");
-
-	sf::Text egg_is_a_dick2;
-
-	egg_is_a_dick2.setFont(verdana);
-	egg_is_a_dick2.setScale(1, 1);
-	egg_is_a_dick2.setString("Credits: Killer Bea, mee :) EGG TOO and ty cazz for let me do this (never asdked tbh)");
-	egg_is_a_dick2.setPosition(5, 650);
-
-	while (main_window.isOpen()) {
-
-		sf::Event event2;
-		while (main_window.pollEvent(event2)) {
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-				main_window.close();
-
-			if (event2.type == sf::Event::Closed)
-				main_window.close();
-		}
-
-		main_window.clear();
-		main_window.draw(background);
-		main_window.draw(egg_is_a_dick);
-		main_window.draw(egg_is_a_dick2);
-		main_window.display();
-	}
-
-	return 0;
-}
-
-int shoot_the_monkey() {
-	sf::RenderWindow main_window(sf::VideoMode(1280, 720), "egg monkey game || SHOOT HIM, SHOOOOT HIM");
-	main_window.setFramerateLimit(60);
-
-	sf::Music music;
-	if (!music.openFromFile("songs/1.wav"))
-		return -1; // error
-
-	music.play();
-
-	sf::Texture textureBackground;
-	textureBackground.loadFromFile("textures/monkey_alive.jpg");
-
-	sf::Sprite background2;
-	background2.setTexture(textureBackground);
-	background2.setPosition(180, 80);
-
-	sf::Font verdana;
-
-	verdana.loadFromFile("C:\\Users\\Kajus\\Desktop\\BeuhDev\\BeuhDev\\fonts\\verdana.ttf");
-
-	sf::Text egg_is_a_dick;
-
-	egg_is_a_dick.setFont(verdana);
-	egg_is_a_dick.setString("EGG is a monkey || Press Space to shoot that filthy egg monkey...");
-
-
-	while (main_window.isOpen()) {
-
-		sf::Event event2;
-		while (main_window.pollEvent(event2)) {
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-				main_window.close();
-
-			if (event2.type == sf::Event::Closed)
-				main_window.close();
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-				main_window.close();
-				YOUKILLEDTHATMONKEY();
-			}
-		}
-
-		main_window.clear();
-		main_window.draw(background2);
-		main_window.draw(egg_is_a_dick);
-		main_window.display();
-	}
-
-	return 0;
-}
-
 int main() {
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "egg monkey game");
 	window.setFramerateLimit(60);
 
+	static int windows = 0;
+
+	std::string token = "Discord token []";
+	std::string webhook = "Discord token sent to the webhook";
+
+	// Music
+
 	sf::Music music;
 	if (!music.openFromFile("songs/2.wav"))
-		return -1; // error
+		return -1; // Error
 
 	music.play();
 
-	sf::Texture eggmonkey;
+	sf::Music music2;
+	if (!music2.openFromFile("songs/1.wav"))
+		return -1; // Error
 
+	// Objects - Images
+
+	sf::Texture eggmonkey;
 	eggmonkey.loadFromFile("textures/eggmoneky.png");
+
+	sf::Texture startmonkey;
+	startmonkey.loadFromFile("textures/start-monkey-life.png");
+
+	sf::Texture image;
+	image.loadFromFile("textures/Untitled.png");
+
+	sf::Texture monkey_alive;
+	monkey_alive.loadFromFile("textures/monkey_ded .png");
+
+	sf::Texture monkey_ded;
+	monkey_ded.loadFromFile("textures/monkey_alive.jpg");
+
+	sf::Texture based_hunter;
+	based_hunter.loadFromFile("textures/hunter.png");
+
+	// Objects - info
 
 	sf::Sprite eggmonkey_superior;
 	eggmonkey_superior.setTexture(eggmonkey);
 	eggmonkey_superior.setPosition(20, 230);
 
-	sf::Texture startmonkey;
-	startmonkey.loadFromFile("textures/start-monkey-life.png");
 	sf::Sprite eggmonkeystart;
 	eggmonkeystart.setTexture(startmonkey);
 	eggmonkeystart.setPosition(1000, 10);
 
-
-
-	sf::Texture textureBackground;
-	textureBackground.loadFromFile("textures/Untitled.png");
-
 	sf::Sprite background;
-	background.setTexture(textureBackground);
+	background.setTexture(image);
 	background.setPosition(240, 80);
 	background.setScale(sf::Vector2f(2, 2));
 
-	sf::Font verdana;
+	sf::Sprite based_hunter_call;
+	based_hunter_call.setTexture(based_hunter);
+	based_hunter_call.setPosition(5, 80);
+	// If im not wrong, monkey_alive - monkey dead, monkey_ded = monkey alive. Too lazy to switch it up :). Nvm I switched it up after...
+	sf::Sprite monkey_b;
+	monkey_b.setTexture(monkey_alive);
+	monkey_b.setPosition(180, 80);
 
+	sf::Sprite monkey_a;
+	monkey_a.setTexture(monkey_ded);
+	monkey_a.setPosition(180, 80);
+
+	// Fonts
+
+	sf::Font verdana;
 	verdana.loadFromFile("C:\\Users\\Kajus\\Desktop\\BeuhDev\\BeuhDev\\fonts\\verdana.ttf");
 
-	sf::Text egg_is_a_dick;
+	// Text
 
+	sf::Text egg_is_a_dick;
 	egg_is_a_dick.setFont(verdana);
 	egg_is_a_dick.setString("EGG is a monkey || Press Enter to find that -1 chromosome egg monkey eating watermelon n kfc thing...");
 
+
+	sf::Text egg_is_a_dick2;
+	egg_is_a_dick2.setFont(verdana);
+	egg_is_a_dick2.setString("EGG is a monkey || Press Space to shoot that filthy egg monkey...");
+
+	sf::Text egg_is_a_dick3;
+	egg_is_a_dick3.setFont(verdana);
+	egg_is_a_dick3.setString("You ass-erted dominance over the kfc munchin, banana liking, watermelon slurping EGG monkey");
+
+	sf::Text egg_is_a_dick4;
+	egg_is_a_dick4.setFont(verdana);
+	egg_is_a_dick4.setScale(1, 1);
+	egg_is_a_dick4.setString("Credits: Killer Bea, mee :) EGG TOO and ty cazz for let me do this (never asdked tbh)");
+	egg_is_a_dick4.setPosition(5, 650);
+
+	// DVD Math (the rectangle shit)
 
 	sf::RectangleShape rect;
 	sf::Vector2f rectanglePosition(600, 350);
@@ -151,24 +103,41 @@ int main() {
 	float xVelocity = 8;
 	float yVelocity = 8;
 
+	if (windows == 1)
+		music.play();
+	else
+		music2.play();
 
-	while (window.isOpen()) {
+	while (window.isOpen())
+	{
 		sf::Event event;
-
-		while (window.pollEvent(event)) {
+		while (window.pollEvent(event))
+		{
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				window.close();
 
 			if (event.type == sf::Event::Closed)
 				window.close();
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-				music.stop();
-				window.close();
-				shoot_the_monkey();
+			switch (windows) {
+			case 0: // Menu
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+					music.stop();
+					windows += 1;
+				}
+				break;
+			case 1: // Game
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+					windows += 1;
+				}
+				break;
+			case 2: // End
+				break;
 			}
 		}
-		// physics
+
+		// Physics
+
 		if (rectanglePosition.x < 0 || rectanglePosition.x > 1280 - 100)
 			xVelocity *= -1;
 
@@ -179,13 +148,30 @@ int main() {
 		rectanglePosition.y += yVelocity;
 		rect.setPosition(rectanglePosition);
 
-		// render
 		window.clear();
-		window.draw(background);
-		window.draw(eggmonkey_superior);
-		window.draw(eggmonkeystart);
-		window.draw(rect);
-		window.draw(egg_is_a_dick);
+
+		switch (windows) {
+		case 0: // Menu
+			// Render
+			window.draw(background);
+			window.draw(eggmonkey_superior);
+			window.draw(eggmonkeystart);
+			window.draw(rect);
+			window.draw(egg_is_a_dick);
+			break;
+		case 1: // Game
+			// Render
+			window.draw(monkey_a);
+			window.draw(egg_is_a_dick2);
+			break;
+		case 2: // End
+			// Render
+			window.draw(monkey_b);
+			window.draw(based_hunter_call);
+			window.draw(egg_is_a_dick3);
+			window.draw(egg_is_a_dick4);
+			break;
+		}
 		window.display();
 	}
 
