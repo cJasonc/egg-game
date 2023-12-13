@@ -1,6 +1,6 @@
 # egg-game
 
-EGG GAME RELEASE VERSION 1
+EGG GAME RELEASE
 
 First evver project of me, me no underrstand english but SFML is  every gut, efuck egg maaan he say sfml bed
 
